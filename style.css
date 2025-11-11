@@ -12,7 +12,7 @@
     width: 100%;
     overflow-x: hidden;
     background-color: var(--blue);
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
     color: var(--text-light);
     display: flex;
     flex-direction: column;
