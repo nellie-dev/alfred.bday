@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="custom-audio-player">
+    <div class="vinyl-boombox-wrapper">
+      <img src="vinyl.png" alt="vinyl" class="vinyl-spin" />
+      
+      <div class="boombox">
+        <button id="playPauseBtn" class="play-btn">▶️</button>
+        <span class="track-title"> Birthday Anthem</span>
+        <audio id="background-music" loop>
+          <source src="alfy.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+    </div>
+  </div>  
+  
+  <div class="main-page balloon-top-left"></div>
+  <div class="main-page balloon-bottom-right"></div>
+  <div class="main-page confetti-behind"></div>
+
+  <div class="cloud" id="mainPage">
+    <h1>HAPPY</h1>
+    <h2>BDAY,Alfred!</h2>
+    <img src="alfy.photo2.jpg" alt="Friend's Picture" class="profile-pic" />
+    <p class="desc">Happy 27th, Love!!🎉🥳. You came into my life at the right time, i only hope to be the best of friend to you and eventually, your lover. Wishing you all the best life has to offer. Blessings on blessings!🥂</p>
+    <div class="car-placeholder"></div>
+  </div>
+
+  <button class="action-button button-spacing" onclick="goToChoices()">What would you like to do for your big day?</button>
+
+  <script src="script.js"></script>
+
+  <script>
+    const music = document.getElementById('background-music');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const vinyl = document.querySelector('.vinyl-spin');
+  
+    let isPlaying = false;
+  
+    playPauseBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        playPauseBtn.textContent = '▶️';
+        vinyl.classList.add('paused');
+      } else {
+        music.play();
+        playPauseBtn.textContent = '⏸️';
+        vinyl.classList.remove('paused');
+      }
+      isPlaying = !isPlaying;
+    });
+  
+    window.addEventListener('load', () => {
+      music.play().then(() => {
+        isPlaying = true;
+        playPauseBtn.textContent = '⏸️';
+        vinyl.classList.remove('paused');
+      }).catch(err => {
+        console.log('Autoplay blocked:', err);
+      });
+    });
+  </script>  
+  
+</body>
+</html>

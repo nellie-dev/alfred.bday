@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Activity</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="custom-audio-player">
+    <div class="vinyl-boombox-wrapper">
+      <img src="vinyl.png" alt="vinyl" class="vinyl-spin" />
+      
+      <div class="boombox">
+        <button id="playPauseBtn" class="play-btn">▶️</button>
+        <span class="track-title"> Birthday Anthem</span>
+        <audio id="background-music" loop>
+          <source src="birthday.song.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+    </div>
+  </div>   
+
+  <div class="choice-page" id="choicePage">
+
+    <div class="balloon-top-left"></div>
+    <div class="balloon-bottom-right"></div>
+    <div class="confetti-behind"></div>
+
+    <h2>Choose your birthday adventure!</h2>
+    <div class="choices">
+      <button onclick="selectChoice(this, 'Shooting Range')">A. Karting</button>
+      <button onclick="selectChoice(this, 'Museum of Illusions')">B. Bowling</button>
+      <button onclick="selectChoice(this, 'Quad Biking')">C. Quad Biking</button>
+    </div>
+    <button class="action-button submit-btn" id="submitBtn">Submit</button>
+    <button class="back-icon" onclick="goBack()">Back</button>
+  </div>
+
+  <div class="popup" id="popup">Sent!</div>
+  <script src="script.js"></script>
+
+  <script>
+    const music = document.getElementById('background-music');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const vinyl = document.querySelector('.vinyl-spin');
+  
+    let isPlaying = false;
+  
+    playPauseBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        playPauseBtn.textContent = '▶️';
+        vinyl.classList.add('paused');
+      } else {
+        music.play();
+        playPauseBtn.textContent = '⏸️';
+        vinyl.classList.remove('paused');
+      }
+      isPlaying = !isPlaying;
+    });
+  
+    window.addEventListener('load', () => {
+      music.play().then(() => {
+        isPlaying = true;
+        playPauseBtn.textContent = '⏸️';
+        vinyl.classList.remove('paused');
+      }).catch(err => {
+        console.log('Autoplay blocked:', err);
+      });
+    });
+  </script>  
+
+</body>
+</html>
