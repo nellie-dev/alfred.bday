@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
 :root {
     --blue: #003366;
     --highlight: #ffd700;
@@ -12,7 +14,7 @@
     width: 100%;
     overflow-x: hidden;
     background-color: var(--blue);
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: 'Comic Neue', cursive, sans-serif;
     color: var(--text-light);
     display: flex;
     flex-direction: column;
